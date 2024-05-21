@@ -1,0 +1,52 @@
+<div class="overLayer d-flex justify-content-center align-items-center">
+    <div class="popup py-4 px-5 position-relative">
+        <div class="close position-absolute">
+            <button (click)="close()" class="btn btn-danger">x</button>
+        </div>
+        <h2 class="mb-4">Add {{ role=='Admin'?'Category':'Product'}}</h2>
+        <form [formGroup]="role == 'User'? addProduct : addCategory"
+            (ngSubmit)="role == 'User'? submitForm(addProduct) : submitForm(addCategory)">
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                    <label class="form-label">Name</label>
+                    <input formControlName="Name" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                    <label class="form-label">Description</label>
+                    <input formControlName="Description" type="text" class="form-control" />
+                </div>
+            </div>
+            <div *ngIf="role == 'User'">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label">Price</label>
+                        <input formControlName="Price" type="number" class="form-control" />
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label">Image</label>
+                        <input (change)="onFileChange($event)" type="file" class="form-control" />
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label">Qunatity</label>
+                        <input formControlName="Quantity" type="number" class="form-control" />
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label">Categoris</label>
+                        <select formControlName="CategoryId" class="form-select">
+                            <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>

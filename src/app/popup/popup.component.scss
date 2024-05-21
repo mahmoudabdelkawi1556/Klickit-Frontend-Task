@@ -1,0 +1,28 @@
+.overLayer {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+.popup {
+  background-color: #fff;
+  width: 700px;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.close {
+  top: 16px;
+  right: 28px;
+  button{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-content: center;
+  }
+}
